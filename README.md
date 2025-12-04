@@ -21,10 +21,40 @@ Technical introduction (unofficial): [AI Papers Slop (English)](https://www.yout
 
 
 <div align="center">
-  <a href="https://youtu.be/p71Wp1FuqTw">
-    <img src="assets/youtube.png" alt="Watch the video">
-  </a>
+<table width="100%">
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://youtu.be/p71Wp1FuqTw">
+        <img src="assets/youtube1.png" alt="Watch the video" width="100%">
+      </a>
+      <br>
+      Quaick Galance of SVI Family!
+    </td>
+    <td align="center" width="33%">
+      <a href="https://www.youtube.com/watch?v=xEgVF3fAZ5o">
+        <img src="assets/youtube2.png" alt="Watch the video" width="100%">
+      </a>
+      <br>
+      8-minute Crazy Tom & Jerry made by SVI-Tom
+    </td>
+    <td align="center" width="33%">
+      <a href="https://www.youtube.com/watch?v=a7Zx5e9ZjK4">
+        <img src="assets/youtube3.png" alt="Watch the video" width="100%">
+      </a>
+      <br>
+      14-minute videos made by SVI-2.0 and SVI-Talk.
+    </td>
+  </tr>
+</table>
 </div>
+
+## 🚀 [12-04-2025] Update SVI 2.0 
+
+Try SVI-2.0 for both Wan 2.1 ([main branch](https://github.com/vita-epfl/Stable-Video-Infinity#)) and Wan 2.2 ([svi_wan22 branch](https://github.com/vita-epfl/Stable-Video-Infinity/tree/svi_wan22)), which share the same inference setup with SVI-Shot. Note that workflow should use the same format as SVI-Shot (including the first-frame padding), rather than directly using Pure Wan + LoRA!
+
+
+SVI-2.0 is a unified version: it inherits the motion dynamics of SVI-Film while retaining the stability of SVI-Shot. For example, it enables controllable exit–reenter character attributes and supports subtle scene transitions within a shot.
+
 
 ## ✨ Highlight
 
@@ -37,7 +67,7 @@ Technical introduction (unofficial): [AI Papers Slop (English)](https://www.yout
 
 
 
-You can watch our 8-minute crazy-version Tom & Jerry video from [Bilibili](https://www.bilibili.com/video/BV17UxPz4Ez1/) or [Youtube](https://www.youtube.com/watch?v=xEgVF3fAZ5o). If you think this project is useful, we would really appreciate your star ⭐, which encourages us to better develop the open-source community! This repository will be continuously maintained. Thank you!
+<!-- You can watch our 8-minute crazy-version Tom & Jerry video from [Bilibili](https://www.bilibili.com/video/BV17UxPz4Ez1/) or [Youtube](https://www.youtube.com/watch?v=xEgVF3fAZ5o). If you think this project is useful, we would really appreciate your star ⭐, which encourages us to better develop the open-source community! This repository will be continuously maintained. Thank you! -->
 
 </div>
 
@@ -72,21 +102,17 @@ If you can’t wait for the official ComfyUI release, try the testing versions o
 - Use the boat and cat demos for 50s generation and compare them with the [reproduced ones](https://github.com/kijai/ComfyUI-WanVideoWrapper/issues/1519#issuecomment-3443540666) to verify correctness.
 - SVI-Shot also supports using different text for clips. See [here](https://www.reddit.com/r/StableDiffusion/comments/1oh4q3w/wan21_svishot_lora_long_video_test_1min/). Thanks @Taiwan1912！
 
-<!-- ### More Technical Infomation
-
-For SVI-Film, SVI does not fully trust the low-level quality of reference images because it was trained to perform image restoration, i.e., gradually improving images. So some of the low-level changes you see are the model denoising toward what it considers an error-free directions, not toward the reference image. One minute with 10+ prompts is totally fine; for longer generation you might see some kind of forgetting of the initial frame (style or content), but, most importantly, the content or imagery won’t get collapse: that’s the biggest difference from WAN. You can watch our 8-minute crazy-version Tom & Jerry video from [Bilibili](https://www.bilibili.com/video/BV17UxPz4Ez1/) or [Youtube](https://www.youtube.com/watch?v=xEgVF3fAZ5o): the later animation style matches the style in our training dataset (the older Tom version), not the first frame, and also will never drift! If you find issues in long generation, please let us know, and we wil help to fix. For the Shot version, there is some probability of reverting to ref-frame-like state; we will address that in future fixes.  -->
 
 Thank you for playing with SVI!
 
 ## 🔥 News
 
-[10-31-2025] Official SVI-Shot ComfUI workflow
-[10-23-2025] Preview of Wan 2.2-5B-SVI and some tips for custom SVI implementation: See [DevLog](docs/DevLog.md)!  
-[10-21-2025] The error-banking strategy is optimized, further imporving the stability. See details in [DevLog](docs/DevLog.md)!  
-[10-13-2025] SVI is now fully open-sourced and online!
+- [12-04-2025] SVI-2.0 released, supporting both Wan 2.1 and Wan 2.2
+- [10-31-2025] Official SVI-Shot ComfUI workflow! 
+- [10-23-2025] Preview of Wan 2.2-5B-SVI and some tips for custom SVI implementation: See [DevLog](docs/DevLog.md)!  
+- [10-21-2025] The error-banking strategy is optimized, further imporving the stability. See details in [DevLog](docs/DevLog.md)!  
+- [10-13-2025] SVI is now fully open-sourced and online!
 
-
-PS: Wan 2.2-5B-SVI is coming.  
 
 ## ❓ Frequently Asked Questions
 
@@ -134,7 +160,8 @@ huggingface-cli download Wan-AI/Wan2.1-I2V-14B-480P --local-dir ./weights/Wan2.1
 
 | Model                           | Task                    | Input                      | Output           | Hugging Face Link                                                                                                                | Comments                                                                                                   |
 | ------------------------------- | ----------------------- | -------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **ALL**                   | Infinite possibility    | Image + X                  | X video          | [🤗 Folder](https://huggingface.co/vita-video-gen/svi-model/tree/main/version-1.0)                                                  | Family bucket! I want to play with all!                                                                    |
+| **SVI-2.0**              | Single-scene generation | Image + Text prompt        | Long video       | [🤗 Model](https://huggingface.co/vita-video-gen/svi-model/resolve/main/version-2.0/SVI_Wan2.1-I2V-14B_lora_v2.0.safetensors?download=true)             | Generate consistent long video with 1 text prompt. (This will never drift or forget in our 20 min test, see the )                                 |                          
+| **ALL SVI-1.0**                   | Infinite possibility    | Image + X                  | X video          | [🤗 Folder](https://huggingface.co/vita-video-gen/svi-model/tree/main/version-1.0)                                                  | Family bucket! I want to play with all!                                                                    |
 | **SVI-Shot**              | Single-scene generation | Image + Text prompt        | Long video       | [🤗 Model](https://huggingface.co/vita-video-gen/svi-model/resolve/main/version-1.0/svi-shot.safetensors?download=true)             | Generate consistent long video with 1 text prompt. (This will never drift or forget in our 20 min test)                                 |
 | **SVI-Film-Opt-10212025**  (Latest)            | Multi-scene generation  | Image + Text prompt stream | Film-style video | [🤗 Model](https://huggingface.co/vita-video-gen/svi-model/resolve/main/version-1.0/svi-film-opt-10212025.safetensors)             | Generate creative long video with 1 text prompt stream (5 second per text).                                |
 | **SVI-Film**              | Multi-scene generation  | Image + Text prompt stream | Film-style video | [🤗 Model](https://huggingface.co/vita-video-gen/svi-model/resolve/main/version-1.0/svi-film.safetensors?download=true)             | Generate creative long video with 1 text prompt stream (5 second per text).                                |
@@ -145,6 +172,19 @@ huggingface-cli download Wan-AI/Wan2.1-I2V-14B-480P --local-dir ./weights/Wan2.1
 
 Note: If you want to play with T2V, you can directly use SVI with an image generated by any T2I model!
 
+### SVI-2.0
+
+For this model, you can try the sample in [100-prompt-sample](data/toy_test/svi_2.0) with SVI-Shot inference scirpt. It should generate results similar to the ones shown in our 14-min YouTube video.
+
+
+```bash
+# This uses the SVI-Shot inference script and workflow, supporting both 5 and 1 motion frames
+huggingface-cli download vita-video-gen/svi-model version-2.0/SVI_Wan2.1-I2V-14B_lora_v2.0.safetensors --local-dir ./weights/Stable-Video-Infinity
+
+```
+
+
+### SVI-1.0
 ```bash
 # login with your fine-grained token
 huggingface-cli login
@@ -203,6 +243,8 @@ weights/
 │   ├── multitalk.safetensors (symlink)
 │   └── README.md
 ├── Stable-Video-Infinity/
+│   ├── version-2.0/
+│   │   └── SVI_Wan2.1-I2V-14B_lora_v2.0.safetensors (Improved Wan 2.1 14B SVI )
 │   └── version-1.0/
 │       ├── svi-shot.safetensors
 │       ├── svi-film.safetensors
@@ -233,6 +275,9 @@ weights/
 The following scripts will use data in `data/demo` for inference. You can also use custom data to inference by simply changing the data path.
 
 ```bash
+# SVI-2.0
+bash scripts/test/svi_2.0.sh 
+
 # SVI-Shot
 bash scripts/test/svi_shot.sh 
 
@@ -341,12 +386,9 @@ huggingface-cli download --repo-type dataset vita-video-gen/svi-benchmark --loca
 
 ## 📋 TODO List
 
-- [X] Release everything about SVI
-- [ ] Wan 2.2 5B based SVI [Issue #1 #7]
-- [ ] Wan 2.2 14B based SVI [Issue #1]
-- [ ] Streaming generation model 
-
-- [Call for TODO]  Write down your idea in the Issue
+- [X] Release everything about SVI  
+- [X] Wan 2.2 SVI  
+- [ ] Customizable video generation 
 
 ## 🙏 Acknowledgement
 
